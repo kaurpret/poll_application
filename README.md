@@ -1,6 +1,6 @@
 # poll_application
-Django
-Python3
+Django==3.2.12
+Python 3.7.3
 HTML
 CSS
 Javascript
