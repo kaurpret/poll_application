@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Password</title>
+    <link rel="icon" href="/static/image/2.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    {% load static %}
+    <style>
+        body{
+            background-color: honeydew ;
+        }
+        .a{
+            background-color: ivory;
+            width: 600px;
+            margin-top: 20%;
+            margin-left: 25%;
+            padding: 20px;
+            font-style: oblique;
+            border-radius: 5px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            border:  solid 1px black;
+        }
+        .b1{
+            float:right;
+            margin-right: 10px;
+        }
+        .a2{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-style: oblique;
+            border:  solid 1px black;
+            background-color: whitesmoke;
+            border-radius: 3px;
+        }
+        .a3{
+            border:  solid 1px black;
+            border-radius: 5px;
+            width: 100px;
+            height:40px;
+            font-size: 20px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-style: oblique;
+            background-color: whitesmoke;
+            margin-left: 20%;
+        }
+        .b{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-style: oblique;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="a">
+    <h2><i><u>Change password</u></i></h2>
+    <br>
+    <img src="/static/image/2.png" class="b1">
+
+    <form action="change" method="post">
+        {% csrf_token %}
+        <label class="b">Email : </label> <input type="email" class="a2" name="email"  readonly value={{email}}><br><br>
+        <label class="b">Old Password :</label> <input type="password"  class="a2"  name="old" ><br><br>
+        <label class="b"> New Password :</label> <input type="password"  name="new" class="a2" ><br><br>
+        <label class="b">Confirm password : </label><input type="password" class="a2"  name="conf"><br><br>
+      <button class="a3">Change..</button>
+      {% if messages %}
+      <div class="messages">
+          {% for message in messages %}
+          <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          {% endfor %}
+      </div>
+      {% endif %}
+    </form>
+    </div>
+</body>
+</html>
